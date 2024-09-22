@@ -4,7 +4,9 @@
 {{/* Find featured image resources if the images parameter is empty. */}}
 {{- if not $imgParams }}
   {{- $featured := $resources.GetMatch "*feature*" -}}
-  {{- if not $featured }}{{ $featured = $resources.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
+  {{- if not $featured }}
+    {{ $featured = $resources.GetMatch "{*cover*,*thumbnail*}" }}
+  {{ end -}}
   {{- with $featured }}
     {{- $imgs = $imgs | append (dict
       "Image" .
